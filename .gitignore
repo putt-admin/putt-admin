@@ -1,0 +1,19 @@
+
+*./__pycache__/
+*.pyc
+*.mo
+#*.gitignore
+/log
+/static/
+
+/venv
+/.DS_Store
+*/.DS_Store
+.DS_Store
+
+# Sphinx docs
+docs/build
+
+# IDEs settings
+.idea
+.vscode
