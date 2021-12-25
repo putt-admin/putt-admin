@@ -17,3 +17,6 @@ docs/build
 # IDEs settings
 .idea
 .vscode
+
+# db.sqlite3
+db.sqlite3

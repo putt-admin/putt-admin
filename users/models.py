@@ -1,3 +1,9 @@
 from django.db import models
 
-# Create your models here.
+from django.contrib.auth.models import AbstractUser
+from .queryset import EnhancedUserManager
+
+
+class User(AbstractUser):
+
+    objects = EnhancedUserManager()
