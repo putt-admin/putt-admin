@@ -46,7 +46,3 @@ def setup(request):
         return redirect(reverse('index'))
 
     return render(request, 'users/setup.html')
-
-
-def user_login(request):
-    pass
