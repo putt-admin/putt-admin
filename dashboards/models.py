@@ -33,8 +33,13 @@ class Menus(ModelBase):
 
 
 class MetaTable(ModelBase):
+    class STATUS_CHOICES(Enum):
+        Undone = 0
+        Handled = 1
+
     table_name = models.CharField(_('Table Name'), max_length=31)
     menu = models.ForeignKey(to=Menus, on_delete=models.CASCADE)
+    status = models.IntegerField(_('status'), choices=[(i.name, i.value,) for i in STATUS_CHOICES], default=0)
 
     class Meta:
         db_table = 'meta_tables'
