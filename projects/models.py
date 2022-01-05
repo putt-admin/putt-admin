@@ -5,23 +5,23 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-class ModelBase(models.Model):
+class BaseModel(models.Model):
     is_active = models.BooleanField(_('is_active'), default=True)
-    create_date = models.DateTimeField(auto_now_add=True)
-    update_date = models.DateTimeField(auto_now=True)
+    created_time = models.DateTimeField(auto_now_add=True)
+    updated_time = models.DateTimeField(auto_now=True)
 
 
-class Projects(ModelBase):
+class Projects(BaseModel):
     name = models.CharField(_('name'), max_length=31, db_index=True)
     remark = models.CharField(_('remark'), max_length=255, null=True, blank=True)
 
     class Meta:
-        db_table = 'projects'
-        verbose_name = _('Projects')
+        db_table = 'project'
+        verbose_name = _('Project')
         verbose_name_plural = _('Projects')
 
 
-class Menus(ModelBase):
+class Menus(BaseModel):
     name = models.CharField(_('name'), max_length=31, db_index=True)
     project = models.ForeignKey(to=Projects, on_delete=models.CASCADE)
 
@@ -32,7 +32,7 @@ class Menus(ModelBase):
         unique_together = ('name', 'project',)
 
 
-class MetaTable(ModelBase):
+class MetaTable(BaseModel):
     class STATUS_CHOICES(Enum):
         Undone = 0
         Handled = 1
@@ -47,7 +47,7 @@ class MetaTable(ModelBase):
         verbose_name_plural = _('Meta-tables')
 
 
-class MetaField(ModelBase):
+class MetaField(BaseModel):
     class TYPE_CHOICES(Enum):
         CharField = 'CharField'
         IntegerField = 'IntegerField'
