@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model, authenticate, login
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
@@ -14,11 +15,9 @@ def index(request):
             if user is not None:
                 login(request, user)
                 # TODO redirect to account page
-                return redirect(reverse('index'))
+                return redirect(reverse('builder'))
             else:
-                return render(request, 'users/index.html', context={
-                    'error': _('username or password is invalidate!')
-                })
+                return render(request, 'users/index.html', context={'error': _('username or password is invalidate!')})
         else:
             return render(request, 'users/index.html')
     else:
@@ -46,3 +45,7 @@ def setup(request):
         return redirect(reverse('index'))
 
     return render(request, 'users/setup.html')
+
+
+def builder(request):
+    return HttpResponse('Builder')
