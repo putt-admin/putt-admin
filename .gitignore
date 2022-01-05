@@ -20,3 +20,10 @@ docs/build
 
 # db.sqlite3
 db.sqlite3
+
+
+# Vue project by vite
+node_modules
+dist
+dist-ssr
+*.local
