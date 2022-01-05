@@ -1,12 +1,26 @@
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate, login
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 
 
 def index(request):
     # Check whether setup administrator
     if get_user_model().objects.is_setup_administrator():
-        return render(request, 'users/index.html')
+        if request.method.upper() == 'POST':
+            username = request.POST['email']
+            password = request.POST['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                # TODO redirect to account page
+                return redirect(reverse('index'))
+            else:
+                return render(request, 'users/index.html', context={
+                    'error': _('username or password is invalidate!')
+                })
+        else:
+            return render(request, 'users/index.html')
     else:
         return redirect(reverse('setup'))
 
