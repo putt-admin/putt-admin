@@ -1,3 +1,28 @@
+<script>
+import API from '../api/index'
+export default {
+  data() {
+    return {
+      username: '',
+      password: '',
+    }
+  },
+  methods: {
+    login(username, password) {
+      console.log('username', this.username)
+      console.log('password', this.password)
+      API.login(this.username, this.password).then(function(response) {
+        if (response.status == 200) {
+          alert('Login success!')
+        } else {
+          alert('Login failed: ' + response.status)
+        }
+      })
+    }
+  },
+}
+</script>
+
 <template>
   <section class="section">
       <div class="container mt-5">
@@ -11,10 +36,10 @@
               <div class="card-header"><h4>Login</h4></div>
 
               <div class="card-body">
-                <form method="POST" action="#" class="needs-validation" novalidate="">
+                <!-- <form method="POST" action="#" class="needs-validation" novalidate=""> -->
                   <div class="form-group">
                     <label for="email">Email</label>
-                    <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
+                    <input id="email" type="email" v-model="username" class="form-control" name="email" tabindex="1" required autofocus>
                     <div class="invalid-feedback">
                       Please fill in your email
                     </div>
@@ -29,7 +54,7 @@
                         </a>
                       </div>
                     </div>
-                    <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
+                    <input id="password" type="password" v-model="password" class="form-control" name="password" tabindex="2" required>
                     <div class="invalid-feedback">
                       please fill in your password
                     </div>
@@ -43,34 +68,16 @@
                   </div>
 
                   <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                    <button type="submit" @click="login" class="btn btn-primary btn-lg btn-block" tabindex="4">
                       Login
                     </button>
                   </div>
-                </form>
-                <div class="text-center mt-4 mb-3">
-                  <div class="text-job text-muted">Login With Social</div>
-                </div>
-                <div class="row sm-gutters">
-                  <div class="col-6">
-                    <a class="btn btn-block btn-social btn-facebook">
-                      <span class="fab fa-facebook"></span> Facebook
-                    </a>
-                  </div>
-                  <div class="col-6">
-                    <a class="btn btn-block btn-social btn-twitter">
-                      <span class="fab fa-twitter"></span> Twitter
-                    </a>
-                  </div>
-                </div>
-
+                <!-- </form> -->
               </div>
             </div>
-            <div class="mt-5 text-muted text-center">
-              Don't have an account? <a href="auth-register.html">Create One</a>
-            </div>
+            
             <div class="simple-footer">
-              Copyright &copy; Stisla 2018
+              Copyright &copy; Putt Admin 2021 - 2022 (Version: v0.1)
             </div>
           </div>
         </div>
