@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'drf_spectacular',
+    'corsheaders',
     'projects',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -137,9 +139,39 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 
 }
+# 跨域允许的请求方式，可以使用默认值，默认的请求方式为:
+# from corsheaders.defaults import default_methods
+CORS_ALLOW_METHODS = (
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS'
+)
 
-CORS_ORIGIN_ALLOW_ALL = True
+# 允许跨域的请求头，可以使用默认值，默认的请求头为:
+# from corsheaders.defaults import default_headers
+# CORS_ALLOW_HEADERS = default_headers
 
-# CORS_ORIGIN_WHITELIST = [
-#     'http://127.0.0.1:8080',
-# ]
+CORS_ALLOW_HEADERS = (
+    'XMLHttpRequest',
+    'X_FILENAME',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+    'Pragma',
+)
+# A regex which restricts the URL’s for which the CORS headers will be sent. Defaults to r'^.*$', i.e. match all URL’s.
+# Useful when you only need CORS on a part of your site, e.g. an API at /api/.
+# CORS_URLS_REGEX = r"^/api/.*$"
+# CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ORIGIN_WHITELIST = [
+    'http://127.0.0.1:3000',
+]
