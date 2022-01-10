@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'dashboards.apps.DashboardsConfig',
     'users.apps.UsersConfig',
+    'projects.apps.ProjectsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'drf_spectacular',
     'corsheaders',
-    'projects',
+
 ]
 
 MIDDLEWARE = [
@@ -139,7 +140,7 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 
 }
-# 跨域允许的请求方式，可以使用默认值，默认的请求方式为:
+# The methods that allow cors
 # from corsheaders.defaults import default_methods
 CORS_ALLOW_METHODS = (
     'GET',
@@ -150,7 +151,7 @@ CORS_ALLOW_METHODS = (
     'OPTIONS'
 )
 
-# 允许跨域的请求头，可以使用默认值，默认的请求头为:
+# The headers that allow cors
 # from corsheaders.defaults import default_headers
 # CORS_ALLOW_HEADERS = default_headers
 
