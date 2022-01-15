@@ -3,8 +3,7 @@
 
 <template>
   <div class="row">
-    <div class="col-12 col-sm-6 col-lg-8"></div>
-    <div class="col-12 col-sm-6 col-lg-4">
+    <div class="col-12">
       <div class="card">
         <div class="card-header">
           <h4>Components <code>BASIC</code></h4>
@@ -13,25 +12,25 @@
           <div class="gallery gallery-md" data-item-height="100">
             <div
               class="gallery-item"
-              data-image="/public/assets/img/news/img09.jpg"
+              data-image="/assets/img/news/img09.jpg"
               data-title="Input"
             >
               <div>Input</div>
             </div>
             <div
               class="gallery-item"
-              data-image="/public/assets/img/news/img10.jpg"
+              data-image="/assets/img/news/img10.jpg"
               data-title="Button"
             >
               <div>Button</div>
             </div>
-            <div
+            <!-- <div
               class="gallery-item gallery-more"
-              data-image="/public/assets/img/news/img08.jpg"
+              data-image="/assets/img/news/img08.jpg"
               data-title="Image 3"
             >
               <div>+2</div>
-            </div>
+            </div> -->
             <div
               class="gallery-item gallery-hide"
               data-image="/public/assets/img/news/img01.jpg"
