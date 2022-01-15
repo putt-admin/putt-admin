@@ -1,9 +1,9 @@
 <script>
-import Pages from "../components/Pages.vue";
+import BuilderPages from "../components/BuilderPages.vue";
 
 export default {
   components: {
-    Pages,
+    BuilderPages,
   },
 };
 </script>
@@ -355,15 +355,7 @@ export default {
 
         <!-- Main Content -->
         <div class="main-content">
-          <section class="section">
-            <div class="section-header">
-              <h1>Pages</h1>
-            </div>
-
-            <div class="section-body">
-              <Pages></Pages>
-            </div>
-          </section>
+          <router-view></router-view>
         </div>
       </div>
     </div>
